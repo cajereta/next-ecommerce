@@ -107,7 +107,7 @@ const Cart = () => {
         {/* Checkout page */}
         {cartStore.onCheckout === "checkout" && <Checkout />}
         {cartStore.onCheckout === "success" && <OrderConfirmed />}
-        {!cartStore.cart.length && (
+        {!cartStore.cart.length && cartStore.onCheckout === "cart" && (
           <div className="flex flex-col itms-center gap-12 text-2xl font-medium pt-56 opacity-75">
             <h1>Your cart is empty!</h1>
             <Image src={basket} alt="empty cart" width={200} height={200} />
