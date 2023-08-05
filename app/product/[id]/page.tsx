@@ -7,7 +7,6 @@ import { getProducts } from "@/app/page";
 const Product = async ({ params }: SearchParamsTypes) => {
   const products = await getProducts();
   const product = products.find((p) => p.id == params.id);
-  console.log(product);
 
   return (
     <div className=" flex flex-col 2xl:flex-row items-center justify-between gap-24 text-gray-700">

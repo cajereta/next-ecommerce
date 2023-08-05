@@ -10,7 +10,7 @@ const OrderConfirmed = () => {
   useEffect(() => {
     cartStore.setPaymentIntent("");
     cartStore.clearCart();
-  });
+  }, []);
 
   const handleCheckoutOrder = () => {
     setTimeout(() => {
