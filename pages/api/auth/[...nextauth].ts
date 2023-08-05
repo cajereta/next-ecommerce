@@ -12,6 +12,9 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
       checks: ["none"],
+      httpOptions: {
+        timeout: 10000,
+      },
       authorization: {
         params: {
           prompt: "consent",

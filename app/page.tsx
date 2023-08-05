@@ -2,7 +2,7 @@ import Image from "next/image";
 import Stripe from "stripe";
 import Product from "./components/Product";
 
-const getProducts = async () => {
+export async function getProducts() {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: "2022-11-15",
   });
@@ -24,7 +24,7 @@ const getProducts = async () => {
     }),
   );
   return productWithPrices;
-};
+}
 
 export default async function Home() {
   const products = await getProducts();

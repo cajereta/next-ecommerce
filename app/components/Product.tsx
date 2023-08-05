@@ -4,15 +4,12 @@ import formatPrice from "@/utils/PriceFormat";
 import Link from "next/link";
 
 const Product = (
-  { name, image, unit_amount, id, description, metadata }: ProductType,
+  { name, image, unit_amount, id }: ProductType,
 ) => {
-  const { features } = metadata;
-
   return (
     <Link
       href={{
         pathname: `/product/${id}`,
-        query: { name, image, unit_amount, id, description, features },
       }}
     >
       <div className="text-gray-700">

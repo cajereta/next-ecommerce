@@ -2,27 +2,31 @@ import { SearchParamsTypes } from "@/types/SearchParams";
 import Image from "next/image";
 import formatPrice from "@/utils/PriceFormat";
 import AddCart from "./AddCart";
+import { getProducts } from "@/app/page";
 
-const Product = async ({ searchParams }: SearchParamsTypes) => {
+const Product = async ({ params }: SearchParamsTypes) => {
+  const products = await getProducts();
+  const product = products.find((p) => p.id == params.id);
+  console.log(product);
+
   return (
     <div className=" flex flex-col 2xl:flex-row items-center justify-between gap-24 text-gray-700">
       <Image
-        src={searchParams.image}
-        alt={searchParams.name}
+        src={product?.image as string}
+        alt={product?.name as string}
         width={600}
         height={600}
       />
       <div className="font-medium text-gray-700">
-        <h1 className="text-2xl py-2">{searchParams.name}</h1>
-        <p>{searchParams.description}</p>
-        <p>{searchParams.features}</p>
+        <h1 className="text-2xl py-2">{product?.name as string}</h1>
+        <p>{product?.description as string}</p>
 
         <div className="flex gap-2">
           <p className="font-bold text-teal-700">
-            {searchParams.unit_amount && formatPrice(searchParams.unit_amount)}
+            {product?.unit_amount && formatPrice(product?.unit_amount)}
           </p>
         </div>
-        <AddCart {...searchParams} />
+        <AddCart {...product} />
       </div>
     </div>
   );
