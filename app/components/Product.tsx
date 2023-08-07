@@ -12,7 +12,7 @@ const Product = (
         pathname: `/product/${id}`,
       }}
     >
-      <div className="text-gray-700">
+      <div>
         <Image
           src={image}
           alt={name}
@@ -22,7 +22,7 @@ const Product = (
         />
         <div className="font-medium py-2 ">
           <h1>{name}</h1>
-          <h2 className="text-sm text-teal-700">
+          <h2 className="text-sm text-primary">
             {unit_amount && formatPrice(unit_amount)}
           </h2>
         </div>

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Stripe from "stripe";
 import Product from "./components/Product";
 

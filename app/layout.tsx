@@ -20,16 +20,15 @@ export default async function RootLayout({
 }) {
   const session = await getServerSession(authOptions);
   return (
-    <html lang="en">
+    <html className={`${interFont.className}`} lang="en">
       <head>
         <link rel="icon" href="/favicon.svg/" />
       </head>
-      <body className={`mx-4 lg:mx-48 ${interFont.className}`}>
-        <Hydrate>
-          <Nav user={session?.user} expires={session?.expires as string} />
-          {children}
-        </Hydrate>
-      </body>
+
+      <Hydrate>
+        <Nav user={session?.user} expires={session?.expires as string} />
+        {children}
+      </Hydrate>
     </html>
   );
 }

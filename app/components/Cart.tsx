@@ -23,7 +23,7 @@ const Cart = () => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="bg-white absolute right-0 top-0 h-screen p-12 overflow-y-scroll text-gray-700 w-full lg:w-2/5"
+        className="bg-base-200 absolute right-0 top-0 h-screen p-12 overflow-y-scroll w-full lg:w-2/5"
       >
         {cartStore.onCheckout === "cart" && (
           <button
@@ -44,7 +44,10 @@ const Cart = () => {
         {cartStore.onCheckout === "cart" && (
           <>
             {cartStore.cart.map((item) => (
-              <div className="flex py-4 gap-4" key={item.id}>
+              <div
+                className="bg-base-100 flex p-4 gap-4 my-4 rounded-md"
+                key={item.id}
+              >
                 <Image
                   src={item.image}
                   alt={item.name}
@@ -93,10 +96,10 @@ const Cart = () => {
         {cartStore.cart.length > 0 && cartStore.onCheckout === "cart"
           ? (
             <div>
-              <p>{formatPrice(totalPrice)}</p>
+              <p>Total: {formatPrice(totalPrice)}</p>
               <button
                 onClick={() => cartStore.setCheckout("checkout")}
-                className="py-2 mt-4 bg-teal-700 w-full rounded-md text-white"
+                className="text-white py-2 mt-4 bg-primary w-full rounded-md "
               >
                 Checkout
               </button>
@@ -108,7 +111,7 @@ const Cart = () => {
         {cartStore.onCheckout === "checkout" && <Checkout />}
         {cartStore.onCheckout === "success" && <OrderConfirmed />}
         {!cartStore.cart.length && cartStore.onCheckout === "cart" && (
-          <div className="flex flex-col itms-center gap-12 text-2xl font-medium pt-56 opacity-75">
+          <div className="flex flex-col items-center  gap-12 text-2xl font-medium pt-56 opacity-75">
             <h1>Your cart is empty!</h1>
             <Image src={basket} alt="empty cart" width={200} height={200} />
           </div>

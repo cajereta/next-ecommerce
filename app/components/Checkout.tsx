@@ -7,16 +7,29 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import CheckoutForm from "./CheckoutForm";
 import OrderAnimation from "./OrderAnimation";
+import { useThemeStore } from "@/store/store";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
 );
 
 const Checkout = () => {
+  const themeStore = useThemeStore();
   const cartStore = useCartStore();
   const [clientSecret, setClientSecret] = useState("");
   const router = useRouter();
+  const [stripeTheme, setStripeTheme] = useState<
+    "flat" | "stripe" | "night" | "none"
+  >("stripe");
+
   useEffect(() => {
+    //theme
+    if (themeStore.mode === "light") {
+      setStripeTheme("stripe");
+    } else {
+      setStripeTheme("night");
+    }
+
     //Payment intent
     fetch("/api/create-payment-intent", {
       method: "POST",
@@ -39,7 +52,7 @@ const Checkout = () => {
   const options: StripeElementsOptions = {
     clientSecret,
     appearance: {
-      theme: "stripe",
+      theme: stripeTheme,
       labels: "floating",
     },
   };

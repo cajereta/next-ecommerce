@@ -22,14 +22,14 @@ const OrderConfirmed = () => {
   const cartStore = useCartStore();
   return (
     <div>
-      <div className="flex items-center justify-center my-12 text-center rounded-md">
+      <div className="flex flex-col items-center justify-center my-12 text-center rounded-md">
         <h1 className="text-xl font-medium">Your order has been placed</h1>
         <h2 className="font-sm my-4">Check your email for the receipt.</h2>
         <BsCheckCircleFill size={48} className="py-8" />
         <div className="flex items-center justify-center gap-12">
           <Link href={"/dashboard"}>
             <button
-              className="font-medium"
+              className=" btn btn-primary font-medium"
               onClick={handleCheckoutOrder}
             >
               Check your order
