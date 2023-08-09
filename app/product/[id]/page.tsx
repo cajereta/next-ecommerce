@@ -1,5 +1,3 @@
-"use client";
-
 import { SearchParamsTypes } from "@/types/SearchParams";
 import Image from "next/image";
 import formatPrice from "@/utils/PriceFormat";
