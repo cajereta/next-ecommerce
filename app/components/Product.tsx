@@ -19,6 +19,7 @@ const Product = (
           width={400}
           height={400}
           className="w-full h-96 rounded-lg"
+          priority
         />
         <div className="font-medium py-2 ">
           <h1>{name}</h1>

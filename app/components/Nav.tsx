@@ -30,8 +30,10 @@ const Nav = ({ user }: Session) => {
         </li>
         <DarkLight />
         {!user && (
-          <li className="bg-teal-600 py-2 px-4 rounded-md">
-            <button onClick={() => signIn()}>Sign in</button>
+          <li>
+            <button className="btn btn-primary" onClick={() => signIn()}>
+              Sign in
+            </button>
           </li>
         )}
         {user && (

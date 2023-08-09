@@ -22,7 +22,7 @@ export default async function RootLayout({
   return (
     <html className={`${interFont.className}`} lang="en">
       <head>
-        <link rel="icon" href="/favicon.svg/" />
+        <link rel="icon" href="/favicon.ico/" />
       </head>
 
       <Hydrate>
