@@ -1,5 +1,3 @@
-"use client";
-
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import formatPrice from "@/utils/PriceFormat";
 import { PrismaClient } from "@prisma/client";
