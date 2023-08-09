@@ -15,13 +15,13 @@ const Product = async ({ params }: SearchParamsTypes) => {
         alt={product?.name as string}
         width={450}
         height={300}
-        className="rounded-md"
+        className="rounded-md w-auto"
       />
       <div className="font-medium">
-        <h1 className="text-2xl py-2 text-primary">
+        <h1 className="text-2xl py-2">
           {product?.name as string}
         </h1>
-        <p text-primary>{product?.description as string}</p>
+        <p>{product?.description as string}</p>
 
         <div className="collapse collapse-arrow bg-base-200 my-2">
           <input type="radio" name="my-accordion-2" />
@@ -70,7 +70,7 @@ const Product = async ({ params }: SearchParamsTypes) => {
         </div>
 
         <div className="flex gap-2">
-          <p className="font-bold text-primary">
+          <p className="font-bold">
             {product?.unit_amount && formatPrice(product?.unit_amount)}
           </p>
         </div>

@@ -19,7 +19,7 @@ const Cart = () => {
   return (
     <div
       onClick={() => cartStore.toggleCart()}
-      className="fixed w-full h-screen left-0 top-0 bg-black/25"
+      className="fixed w-full h-screen left-0 top-0 bg-black/25 z-50 "
     >
       <div
         onClick={(e) => e.stopPropagation()}

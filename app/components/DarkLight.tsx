@@ -10,13 +10,14 @@ const DarkLight = () => {
       {/* this hidden checkbox controls the state */}
 
       <input
-        defaultChecked={themeStore.mode === "winter" ? false : true}
+        aria-label="switch"
+        defaultChecked={themeStore.mode === "light" ? false : true}
         type="checkbox"
         onClick={() => {
-          if (themeStore.mode === "winter") {
+          if (themeStore.mode === "light") {
             themeStore.toggleMode("dark");
           } else {
-            themeStore.toggleMode("winter");
+            themeStore.toggleMode("light");
           }
         }}
       />

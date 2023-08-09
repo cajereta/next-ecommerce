@@ -3,13 +3,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { authOptions } from "./auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import { AddCartType } from "@/types/AddCartType";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/utils/client";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2022-11-15",
 });
-
-const prisma = new PrismaClient();
 
 const calculateOrderAmount = (items: AddCartType[]) => {
   const totalPrice = items.reduce(
@@ -69,7 +67,7 @@ export default async function handler(
       if (!existingOrder) {
         res.status(400).json({ message: "Invalid Payment Intent" });
       }
-      const updatedOrder = await prisma.order.update({
+      await prisma.order.update({
         where: { id: existingOrder?.id },
         data: {
           amount: calculateOrderAmount(items),
@@ -97,7 +95,7 @@ export default async function handler(
     });
 
     orderData.paymentIntentID = paymentIntent.id;
-    const newOrder = await prisma.order.create({
+    await prisma.order.create({
       data: orderData,
     });
     res.status(200).json({ paymentIntent });

@@ -22,7 +22,7 @@ const Product = (
         />
         <div className="font-medium py-2 ">
           <h1>{name}</h1>
-          <h2 className="text-sm text-primary">
+          <h2 className="text-medium font-bold text-accent">
             {unit_amount && formatPrice(unit_amount)}
           </h2>
         </div>

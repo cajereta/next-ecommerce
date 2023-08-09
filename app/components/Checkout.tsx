@@ -2,12 +2,11 @@
 
 import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { useCartStore } from "@/store/store";
+import { useCartStore, useThemeStore } from "@/store/store";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import CheckoutForm from "./CheckoutForm";
 import OrderAnimation from "./OrderAnimation";
-import { useThemeStore } from "@/store/store";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
